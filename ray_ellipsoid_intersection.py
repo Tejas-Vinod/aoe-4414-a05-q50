@@ -87,12 +87,12 @@ c_l_z = float('nan') # z-coordinate of ray origin vector
 
 # parse script arguments
 if len(sys.argv)==7:
-    d_l_x = float(sys.arv[1]) # x-coordinate of origin-referenced ray unit vector
-    d_l_y = float(sys.arv[2]) # y-coordinate of origin-referenced ray unit vector
-    d_l_z = float(sys.arv[3]) # z-coordinate of origin-referenced ray unit vector
-    c_l_x = float(sys.arv[4]) # x-coordinate of ray origin vector
-    c_l_y = float(sys.arv[5]) # y-coordinate of ray origin vector
-    c_l_z = float(sys.arv[6]) # z-coordinate of ray origin vector
+    d_l_x = float(sys.argv[1]) # x-coordinate of origin-referenced ray unit vector
+    d_l_y = float(sys.argv[2]) # y-coordinate of origin-referenced ray unit vector
+    d_l_z = float(sys.argv[3]) # z-coordinate of origin-referenced ray unit vector
+    c_l_x = float(sys.argv[4]) # x-coordinate of ray origin vector
+    c_l_y = float(sys.argv[5]) # y-coordinate of ray origin vector
+    c_l_z = float(sys.argv[6]) # z-coordinate of ray origin vector
 else:
   print(\
    'Usage: '\
@@ -105,9 +105,9 @@ d_l = [d_l_x, d_l_y, d_l_z] # *** MUST be a unit vector
 c_l = [c_l_x, c_l_y, c_l_z] 
 
 ## discriminant
-a = dot(d_l_x,d_l_x) + dot(d_l_y,d_l_y) + dot(d_l_z,d_l_z)/(1-E_E**2)
-b = 2.0*(dot(d_l_x,c_l_x) + dot(d_l_y,c_l_y) + dot(d_l_z,c_l_z)/(1-E_E**2))
-c = dot(d_l_x,c_l_x) + dot(d_l_y,c_l_y) + dot(d_l_z,c_l_z)/(1-E_E**2)-R_E_KM**2
+a = d_l_x*d_l_x + d_l_y*d_l_y + d_l_z*d_l_z/(1-E_E**2)
+b = 2.0*(d_l_x*c_l_x + d_l_y*c_l_y + d_l_z*c_l_z/(1-E_E**2))
+c = c_l_x*c_l_x + c_l_y*c_l_y + c_l_z*c_l_z/(1-E_E**2)-R_E_KM**2
 discr = b*b-4.0*a*c
 
 ## solution logic
